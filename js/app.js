@@ -51,6 +51,7 @@ var chooseFileButton = document.querySelector('#choose_file');
 var saveFileButton = document.querySelector('#save_file');
 var output = document.querySelector('output');
 var img = document.querySelector('img');
+var untransformedImage;
 
 
 chooseFileButton.addEventListener('click', function(e) {
@@ -68,6 +69,7 @@ chooseFileButton.addEventListener('click', function(e) {
     chosenFileEntry.file(function(file) {
       readFileEntry(readOnlyEntry, function(result) {
         img.src = result;
+		untransformedImage = result;
       });
       // Update display.
       writeFileButton.disabled = false;
@@ -107,6 +109,7 @@ var dnd = new DnDFileController('body', function(data) {
   chosenFileEntry = item.webkitGetAsEntry();
   readFileEntry(chosenFileEntry, function(result) {
     img.src = result;
+    untransformedImage = result;
 
   });
   // Update display.

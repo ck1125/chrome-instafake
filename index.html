@@ -44,7 +44,7 @@ button:not(:disabled):active {
   background: linear-gradient(#E3E3E3 40%, #F9F9F9 70%);
 }
 input {
-  width: 100%;
+  width: 90%;
   -webkit-user-select: none;
 }
 input, textarea {
@@ -60,12 +60,36 @@ input, textarea {
 }
 img {
   padding-top: 15px;
+  background: #ffffff url('camera.png') no-repeat center;
 }
 output {
   text-align: left;
   display: block;
 }
+
+.box {
+  width: 200px;
+  margin: 5px;
+}
+.chopped {
+  overflow: hidden;
+}
+[type=radio] {
+	width:15px;
+}
+
+.wrapper {
+	width:700px;
+	min-height:320px;
+}
+
+.radiowrapper {
+	width:250px;
+	margin-left: 320px;
+	margin-top: -300px;	
+}
 </style>
+
 </head>
 <body>
 
@@ -76,7 +100,26 @@ output {
 
 Path: <input type="text" id="file_path" readonly>
 
-<img class="vintage" width=300 height=300/>
+<div class="wrapper">
+	<img class="vintage" width="300" height="300"/>
+
+	<div class="radiowrapper">
+
+		<div class="chopped box" data-transform="vignette">
+			<input type="radio" name="transform"/> <label>Vignette</label>
+		</div>
+
+		<div  class="chopped box" data-transform="sepia">
+			<input type="radio" name="transform"/> <label>Sepia</label>
+		</div>
+
+		<div class="chopped box" data-transform="grayscale">
+			<input type="radio" name="transform"/> <label>GrayScale</label>
+		</div>
+
+	</div>
+</div>
+
 <p class="advisory">Drag and drop jpg/png file from your computer.</p>
 
 <p><button id="save_file" disabled>Save As</button></p>
